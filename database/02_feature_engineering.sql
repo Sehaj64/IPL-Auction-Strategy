@@ -1,7 +1,7 @@
 -- 02_feature_engineering.sql
 
 -- This script creates a view that adds engineered features to the player data.
--- These features will help in more advanced analysis.
+-- These features will help in more advanced analysis across different seasons.
 
 -- Drop the view if it already exists to make this script idempotent
 DROP VIEW IF EXISTS player_features;
@@ -11,6 +11,7 @@ CREATE VIEW player_features AS
 WITH calculated_scores AS (
     SELECT
         id,
+        season,
         name,
         role,
         base_price_usd,
@@ -20,7 +21,7 @@ WITH calculated_scores AS (
         wickets,
         economy_rate,
         is_drafted,
-        -- Calculate a simple performance score based on role
+        -- Calculate a simple performance score based on role for a specific season
         CASE
             WHEN role = 'Batsman' THEN (batting_avg * 1.5) + (strike_rate * 0.5)
             WHEN role = 'Wicketkeeper' THEN (batting_avg * 1.5) + (strike_rate * 0.5)
@@ -33,7 +34,7 @@ WITH calculated_scores AS (
 )
 SELECT
     *,
-    -- Calculate value for money (score per million USD)
+    -- Calculate value for money (score per million USD) for a specific season
     -- Avoid division by zero for players with no price
     CASE
         WHEN base_price_usd > 0 THEN (performance_score / (base_price_usd / 1000000))
@@ -43,6 +44,6 @@ FROM
     calculated_scores;
 
 -- Example of how to use this view:
--- SELECT name, role, performance_score, value_for_money
+-- SELECT season, name, role, performance_score, value_for_money
 -- FROM player_features
--- ORDER BY value_for_money DESC;
+-- ORDER BY season, value_for_money DESC;

@@ -61,11 +61,11 @@ This project serves as a direct, practical application of the concepts detailed 
 
 ## Analysis Highlights
 
-The analysis performed in this project answers several key questions:
+The analysis performed in this project leverages multi-year data to answer several key questions:
 
-*   **Who are the top "value-for-money" players in each role?**
-    *   This is determined by a custom `performance_score` relative to the player's base price.
-*   **How do Indian and Overseas players compare in performance?**
-    *   The project provides a breakdown of average performance scores by player role and nationality.
-*   **Which players are potential "bargains"?**
-    *   The analysis identifies players who are priced below the average for their role but perform above average, making them high-potential acquisitions.
+*   **Who were the top "value-for-money" players in the most recent season?**
+    *   This is determined by a custom `performance_score` relative to the player's base price for the 2023 season.
+*   **How has a star player's performance trended over time?**
+    *   The analysis tracks Virat Kohli's performance score across the 2022 and 2023 seasons to visualize his form.
+*   **How has the average performance of key roles changed year-over-year?**
+    *   The project compares the average performance of Batsmen and Bowlers between seasons to identify trends.

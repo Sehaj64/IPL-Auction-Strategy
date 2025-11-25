@@ -1,15 +1,19 @@
-INSERT INTO players (name, role, base_price_usd, nationality, batting_avg, strike_rate, wickets, economy_rate) VALUES
-('Virat Kohli', 'Batsman', 2000000.00, 'Indian', 37.2, 130.5, NULL, NULL),
-('Rohit Sharma', 'Batsman', 1800000.00, 'Indian', 31.5, 135.2, NULL, NULL),
-('Jasprit Bumrah', 'Bowler', 1900000.00, 'Indian', NULL, NULL, 150, 7.05),
-('Hardik Pandya', 'All-rounder', 1500000.00, 'Indian', 28.1, 145.0, 55, 8.80),
-('Glenn Maxwell', 'All-rounder', 1700000.00, 'Overseas', 27.5, 155.0, 40, 8.50),
-('Rashid Khan', 'Bowler', 1600000.00, 'Overseas', NULL, NULL, 130, 6.50),
-('MS Dhoni', 'Wicketkeeper', 1200000.00, 'Indian', 30.1, 138.0, NULL, NULL),
-('Ben Stokes', 'All-rounder', 1900000.00, 'Overseas', 26.8, 140.0, 60, 8.90),
-('KL Rahul', 'Wicketkeeper', 1400000.00, 'Indian', 34.5, 132.0, NULL, NULL),
-('Trent Boult', 'Bowler', 1500000.00, 'Overseas', NULL, NULL, 100, 7.80),
-('Shikhar Dhawan', 'Batsman', 1000000.00, 'Indian', 35.0, 125.0, NULL, NULL),
-('David Warner', 'Batsman', 1600000.00, 'Overseas', 34.8, 140.0, NULL, NULL),
-('Yuzvendra Chahal', 'Bowler', 1100000.00, 'Indian', NULL, NULL, 120, 7.50),
-('Jos Buttler', 'Wicketkeeper', 1700000.00, 'Overseas', 35.5, 150.0, NULL, NULL);
+-- Sample data for Season 2022
+INSERT INTO players (season, name, role, base_price_usd, nationality, batting_avg, strike_rate, wickets, economy_rate) VALUES
+(2022, 'Virat Kohli', 'Batsman', 2000000.00, 'Indian', 22.7, 115.9, NULL, NULL),
+(2022, 'Jos Buttler', 'Wicketkeeper', 1700000.00, 'Overseas', 57.5, 149.0, NULL, NULL),
+(2022, 'Hardik Pandya', 'All-rounder', 1500000.00, 'Indian', 44.2, 131.2, 8, 7.27),
+(2022, 'Jasprit Bumrah', 'Bowler', 1900000.00, 'Indian', NULL, NULL, 15, 7.18),
+(2022, 'Yuzvendra Chahal', 'Bowler', 1100000.00, 'Indian', NULL, NULL, 27, 7.75),
+(2022, 'Rashid Khan', 'Bowler', 1600000.00, 'Overseas', NULL, NULL, 19, 6.60),
+(2022, 'David Warner', 'Batsman', 1600000.00, 'Overseas', 48.0, 150.5, NULL, NULL);
+
+-- Sample data for Season 2023
+INSERT INTO players (season, name, role, base_price_usd, nationality, batting_avg, strike_rate, wickets, economy_rate) VALUES
+(2023, 'Virat Kohli', 'Batsman', 2000000.00, 'Indian', 53.2, 139.8, NULL, NULL),
+(2023, 'Jos Buttler', 'Wicketkeeper', 1700000.00, 'Overseas', 28.1, 139.0, NULL, NULL),
+(2023, 'Hardik Pandya', 'All-rounder', 1500000.00, 'Indian', 29.7, 136.7, 3, 8.13),
+(2023, 'Jasprit Bumrah', 'Bowler', 1900000.00, 'Indian', NULL, NULL, 20, 6.95), -- Assuming he played and did well
+(2023, 'Yuzvendra Chahal', 'Bowler', 1100000.00, 'Indian', NULL, NULL, 21, 8.17),
+(2023, 'Rashid Khan', 'Bowler', 1600000.00, 'Overseas', NULL, NULL, 27, 6.33),
+(2023, 'David Warner', 'Batsman', 1600000.00, 'Overseas', 34.8, 131.6, NULL, NULL);
