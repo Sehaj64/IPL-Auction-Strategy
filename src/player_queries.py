@@ -8,12 +8,14 @@ def get_all_players(conn, drafted_only=False):
     players = cursor.fetchall()
     return players
 
+
 def get_player_by_id(conn, player_id):
     """Retrieves a single player by their ID."""
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM players WHERE id = ?", (player_id,))
     player = cursor.fetchone()
     return player
+
 
 def get_player_by_name(conn, name):
     """Retrieves a single player by their name."""
@@ -22,7 +24,9 @@ def get_player_by_name(conn, name):
     player = cursor.fetchone()
     return player
 
-def filter_players(conn, role=None, nationality=None, min_price=None, max_price=None, drafted_status=None):
+
+def filter_players(conn, role=None, nationality=None, min_price=None,
+                   max_price=None, drafted_status=None):
     """Filters players based on various criteria."""
     cursor = conn.cursor()
     query = "SELECT * FROM players WHERE 1=1"
@@ -49,19 +53,24 @@ def filter_players(conn, role=None, nationality=None, min_price=None, max_price=
     players = cursor.fetchall()
     return players
 
+
 def draft_player(conn, player_id):
     """Marks a player as drafted."""
     cursor = conn.cursor()
-    cursor.execute("UPDATE players SET is_drafted = 1 WHERE id = ?", (player_id,))
+    cursor.execute("UPDATE players SET is_drafted = 1 WHERE id = ?",
+                   (player_id,))
     conn.commit()
     return cursor.rowcount > 0
+
 
 def undraft_player(conn, player_id):
     """Marks a player as not drafted."""
     cursor = conn.cursor()
-    cursor.execute("UPDATE players SET is_drafted = 0 WHERE id = ?", (player_id,))
+    cursor.execute("UPDATE players SET is_drafted = 0 WHERE id = ?",
+                   (player_id,))
     conn.commit()
     return cursor.rowcount > 0
+
 
 def get_drafted_players_count(conn):
     """Returns the count of currently drafted players."""
@@ -70,12 +79,16 @@ def get_drafted_players_count(conn):
     count = cursor.fetchone()[0]
     return count
 
+
 def get_drafted_overseas_players_count(conn):
     """Returns the count of currently drafted overseas players."""
     cursor = conn.cursor()
-    cursor.execute("SELECT COUNT(*) FROM players WHERE is_drafted = 1 AND nationality = 'Overseas'")
+    sql = ("SELECT COUNT(*) FROM players WHERE is_drafted = 1 AND "
+           "nationality = 'Overseas'")
+    cursor.execute(sql)
     count = cursor.fetchone()[0]
     return count
+
 
 def get_total_squad_cost(conn):
     """Returns the total cost of currently drafted players."""
