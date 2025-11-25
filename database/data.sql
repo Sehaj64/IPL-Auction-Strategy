@@ -1,0 +1,15 @@
+INSERT INTO players (name, role, base_price_usd, nationality, batting_avg, strike_rate, wickets, economy_rate) VALUES
+('Virat Kohli', 'Batsman', 2000000.00, 'Indian', 37.2, 130.5, NULL, NULL),
+('Rohit Sharma', 'Batsman', 1800000.00, 'Indian', 31.5, 135.2, NULL, NULL),
+('Jasprit Bumrah', 'Bowler', 1900000.00, 'Indian', NULL, NULL, 150, 7.05),
+('Hardik Pandya', 'All-rounder', 1500000.00, 'Indian', 28.1, 145.0, 55, 8.80),
+('Glenn Maxwell', 'All-rounder', 1700000.00, 'Overseas', 27.5, 155.0, 40, 8.50),
+('Rashid Khan', 'Bowler', 1600000.00, 'Overseas', NULL, NULL, 130, 6.50),
+('MS Dhoni', 'Wicketkeeper', 1200000.00, 'Indian', 30.1, 138.0, NULL, NULL),
+('Ben Stokes', 'All-rounder', 1900000.00, 'Overseas', 26.8, 140.0, 60, 8.90),
+('KL Rahul', 'Wicketkeeper', 1400000.00, 'Indian', 34.5, 132.0, NULL, NULL),
+('Trent Boult', 'Bowler', 1500000.00, 'Overseas', NULL, NULL, 100, 7.80),
+('Shikhar Dhawan', 'Batsman', 1000000.00, 'Indian', 35.0, 125.0, NULL, NULL),
+('David Warner', 'Batsman', 1600000.00, 'Overseas', 34.8, 140.0, NULL, NULL),
+('Yuzvendra Chahal', 'Bowler', 1100000.00, 'Indian', NULL, NULL, 120, 7.50),
+('Jos Buttler', 'Wicketkeeper', 1700000.00, 'Overseas', 35.5, 150.0, NULL, NULL);
