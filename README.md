@@ -1,42 +1,38 @@
-# IPL Auction Squad Optimizer
+# Advanced SQL and Data Visualization for IPL Player Analysis
 
-This project is a command-line interface (CLI) tool designed to assist in planning and simulating an IPL (Indian Premier League) auction. It provides functionalities to manage a player database, filter players based on various criteria, and build a provisional squad while respecting auction constraints like budget, squad size, and overseas player limits.
+This project demonstrates a professional data science workflow, using advanced SQL for in-database analysis and feature engineering, and Python for execution and visualization. The analysis is centered on a dataset of IPL (Indian Premier League) cricket players, with the goal of uncovering insights about player performance and value.
 
-This project is a practical application of SQL and database management concepts, demonstrating how to build a data-centric application using Python and SQLite.
+This project serves as a direct, practical application of the concepts detailed in the "Decoding SQL: A Foundational Guide" presentation. It showcases how fundamental SQL knowledge can be extended to solve complex data analysis problems.
 
-## Associated Presentation
+## Key Skills Demonstrated
 
-This code project serves as the practical component for the "Decoding SQL: A Foundational Guide" presentation.
+*   **Advanced SQL:** Use of Common Table Expressions (CTEs), Window Functions (`ROW_NUMBER`), complex joins, and aggregations to perform analysis directly within the database.
+*   **Feature Engineering:** Creating new, insightful features (e.g., `performance_score`, `value_for_money`) from base data using SQL.
+*   **Data Analysis:** Asking and answering analytical questions with data to provide actionable insights.
+*   **Data Visualization:** Using Python libraries (`matplotlib`, `seaborn`) to create clear and professional charts that communicate the results of the SQL queries.
+*   **Python & Jupyter Notebooks:** Using Python as a control layer to execute SQL and present findings in a standard data science environment.
 
-- **[View the Presentation](./docs/Final%20Project-SQL.pptx)**
+## Project Structure
 
-## Features
+```
+.
+├── database/
+│   ├── schema.sql                     # Base table schema for players
+│   ├── data.sql                       # INSERT statements for sample player data
+│   ├── 02_feature_engineering.sql     # Creates a SQL VIEW with new calculated features
+│   └── 03_analytical_queries.sql      # Contains complex queries for analysis
+│
+├── notebooks/
+│   └── 01_EDA_and_Visualization.py    # Jupyter Notebook (as .py) to run the analysis and create plots
+│
+└── README.md
+```
 
-- **Player Database**: Comes with a pre-populated database of sample IPL players with their roles, prices, and stats.
-- **Initialize Database**: A one-step command to set up the database schema and load sample data.
-- **Scout Players**:
-  - `players list`: View all players in the database.
-  - `players find <name>`: Search for a specific player by their full name.
-  - `players filter`: Filter players by role, nationality, and price range.
-- **Simulate Squad Building**:
-  - `squad draft <player_id>`: Add a player to your provisional squad. The tool validates the draft against auction rules.
-  - `squad undraft <player_id>`: Remove a player from your squad.
-  - `squad view`: Display the list of players currently in your squad.
-  - `squad summary`: Get a real-time summary of your squad's status (size, cost, remaining budget, etc.).
+## How to Run the Analysis
 
-## Technology Stack
+1.  **Clone the repository.**
 
-- **Backend**: Python 3
-- **Database**: SQLite 3
-
-## Setup and Installation
-
-1.  **Clone the repository (or download the source code).**
-
-2.  **Navigate to the project directory:**
-    ```bash
-    cd sql-project-presentation
-    ```
+2.  **Navigate to the project directory.**
 
 3.  **Create and activate a virtual environment (recommended):**
     ```bash
@@ -49,49 +45,27 @@ This code project serves as the practical component for the "Decoding SQL: A Fou
     source venv/bin/activate
     ```
 
-4.  **Initialize the project database:**
-    This command creates the `ipl_auction.db` file and populates it with sample player data.
+4.  **Install the required Python libraries:**
     ```bash
-    python -m src.main init
+    pip install -r requirements.txt
     ```
 
-## Usage Examples
+5.  **Start the Jupyter Notebook server:**
+    ```bash
+    jupyter notebook
+    ```
+    This will open a new tab in your web browser.
 
-All commands are run from the root of the project directory.
+6.  **Open and run the notebook:**
+    Navigate to the `notebooks/` directory in the Jupyter interface and open the `01_EDA_and_Visualization.py` file. You can then run the cells sequentially to see the analysis and visualizations.
 
-**List all available bowlers:**
-```bash
-python -m src.main players filter --role Bowler
-```
+## Analysis Highlights
 
-**Find a specific player:**
-```bash
-python -m src.main players find "Virat Kohli"
-```
+The analysis performed in this project answers several key questions:
 
-**Draft a player to your squad:**
-```bash
-python -m src.main squad draft 1
-```
-
-**View your current squad and budget summary:**
-```bash
-python -m src.main squad view
-```
-
-**Get a quick summary of your squad's status:**
-```bash
-python -m src.main squad summary
-```
-
-**Remove a player from your squad:**
-```bash
-python -m src.main squad undraft 1
-```
-
-## Running Tests
-
-The project includes a suite of unit tests to verify the correctness of the database queries and squad management logic. To run the tests:
-```bash
-python -m unittest discover tests
-```
+*   **Who are the top "value-for-money" players in each role?**
+    *   This is determined by a custom `performance_score` relative to the player's base price.
+*   **How do Indian and Overseas players compare in performance?**
+    *   The project provides a breakdown of average performance scores by player role and nationality.
+*   **Which players are potential "bargains"?**
+    *   The analysis identifies players who are priced below the average for their role but perform above average, making them high-potential acquisitions.
