@@ -4,6 +4,12 @@ This project is a command-line interface (CLI) tool designed to assist in planni
 
 This project is a practical application of SQL and database management concepts, demonstrating how to build a data-centric application using Python and SQLite.
 
+## Associated Presentation
+
+This code project serves as the practical component for the "Decoding SQL: A Foundational Guide" presentation.
+
+- **[View the Presentation](./docs/Final%20Project-SQL.pptx)**
+
 ## Features
 
 - **Player Database**: Comes with a pre-populated database of sample IPL players with their roles, prices, and stats.
