@@ -13,14 +13,7 @@
 # ---
 
 # # Part 1: Exploratory Data Analysis (EDA) and Visualization
-#
-# In this notebook, we will explore the multi-year IPL player dataset to uncover insights.
-# We will perform the following steps:
-# 1.  Initialize the database using our SQL scripts.
-# 2.  Execute advanced analytical queries from our SQL scripts.
-# 3.  Visualize the results of these queries to communicate findings, focusing on trends over time.
 
-# ## 1. Setup and Database Initialization
 
 
 # +
@@ -56,8 +49,6 @@ print("Database initialized and features engineered successfully.")
 # ## 2. Execute and Visualize Analytical Queries
 
 
-# ### Query 1: Top 5 "Value for Money" Players for the 2023 Season
-#
 
 
 # +
@@ -85,7 +76,6 @@ plt.show()
 
 
 # +
-# Read Query 2
 query2 = all_queries[1]
 df_player_trend = pd.read_sql_query(query2, conn)
 
@@ -126,14 +116,8 @@ plt.tight_layout()
 plt.show()
 # -
 
-# ## 3. Conclusion
-We executed pre-defined SQL scripts to:
-# 1.  Create a database schema with a `season` column.
-# 2.  Load multi-year sample data.
-# 3.  Engineer features in a SQL `VIEW` on a per-season basis.
-#
-# Using Python for execution and visualization allows us to present these SQL-driven insights showcasing a key skill set for any data scientist.
 
-# Close the connection
+
+
 conn.close()
 print("\nDatabase connection closed.")
