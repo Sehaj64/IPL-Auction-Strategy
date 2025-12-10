@@ -1,14 +1,27 @@
 
+
 import sqlite3
 import pandas as pd
 import os
 
-DB_FILE = os.path.join(os.path.dirname(__file__), '..', 'database', 'ipl.db')
-
 def main():
-    conn = sqlite3.connect(DB_FILE)
+    db_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'database', 'ipl.db'))
+    sql_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'database', '05_additional_questions.sql'))
 
-    with open(os.path.join(os.path.dirname(__file__), '..', 'database', '05_additional_questions.sql'), 'r') as f:
+    print(f"Database path: {db_path}")
+    print(f"SQL file path: {sql_file_path}")
+
+    if not os.path.exists(db_path):
+        print(f"Error: Database file not found at {db_path}")
+        return
+    
+    if not os.path.exists(sql_file_path):
+        print(f"Error: SQL file not found at {sql_file_path}")
+        return
+
+    conn = sqlite3.connect(db_path)
+
+    with open(sql_file_path, 'r') as f:
         all_queries = f.read()
     
     conn.executescript(all_queries)
@@ -32,7 +45,7 @@ def main():
             print(df)
         except Exception as e:
             print(f"Error executing query: {e}")
-        print("\\n")
+        print("\n")
 
 
     conn.close()
