@@ -82,7 +82,7 @@ Follow these steps to set up and run the IPL Data Analysis Dashboard locally:
 
 5.  **Run the Interactive Dashboard:**
     ```bash
-    streamlit run /workspaces/IPL-Auction-Strategy/app.py
+     python -m streamlit run app.py
     ```
     *   **Local Machine:** Your web browser will automatically open to the Streamlit dashboard (usually at `http://localhost:8501`).
     *   **GitHub Codespaces:** Once the command runs, Streamlit will typically provide a link in the terminal or a pop-up notification (via the "Ports" tab) to open the application in your browser. Click on this provided external link to access the dashboard.
