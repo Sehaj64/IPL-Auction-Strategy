@@ -44,6 +44,33 @@ def main():
     st.dataframe(df6)
     st.bar_chart(df6.set_index('dismissal_kind'))
 
+    # New Analysis: Top Run Scorers
+    st.header("Top 10 Run Scorers")
+    query_runs = "SELECT batsman, SUM(batsman_runs) AS total_runs FROM deliveries GROUP BY batsman ORDER BY total_runs DESC LIMIT 10;"
+    df_runs = pd.read_sql_query(query_runs, conn)
+    st.dataframe(df_runs)
+    st.bar_chart(df_runs.set_index('batsman'))
+
+    # New Analysis: Top Wicket Takers
+    st.header("Top 10 Wicket Takers")
+    query_wickets = "SELECT bowler, COUNT(*) AS total_wickets FROM deliveries WHERE is_wicket = 1 AND dismissal_kind NOT IN ('run out', 'retired hurt', 'obstructing the field') GROUP BY bowler ORDER BY total_wickets DESC LIMIT 10;"
+    df_wickets = pd.read_sql_query(query_wickets, conn)
+    st.dataframe(df_wickets)
+    st.bar_chart(df_wickets.set_index('bowler'))
+
+    # New Analysis: Most Player of the Match Awards
+    st.header("Top 10 Player of the Match Awards")
+    query_pom = "SELECT player_of_match, COUNT(*) AS total_awards FROM matches WHERE player_of_match IS NOT NULL GROUP BY player_of_match ORDER BY total_awards DESC LIMIT 10;"
+    df_pom = pd.read_sql_query(query_pom, conn)
+    st.dataframe(df_pom)
+    st.bar_chart(df_pom.set_index('player_of_match'))
+
+    # New Analysis: Runs per Venue
+    st.header("Total Runs Scored per Venue")
+    query_venue = "SELECT venue, SUM(total_runs) AS total_runs_scored FROM matches JOIN deliveries ON matches.id = deliveries.id GROUP BY venue ORDER BY total_runs_scored DESC LIMIT 15;"
+    df_venue = pd.read_sql_query(query_venue, conn)
+    st.dataframe(df_venue)
+    st.bar_chart(df_venue.set_index('venue'))
 
     conn.close()
 
