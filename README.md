@@ -1,40 +1,64 @@
-# Advanced SQL and Data Visualization for IPL Player Analysis
+# IPL Data Analysis Dashboard
 
-This project demonstrates a professional data science workflow, using advanced SQL for in-database analysis and feature engineering, and Python for execution and visualization. The analysis is centered on a dataset of IPL (Indian Premier League) cricket players, with the goal of uncovering insights about player performance and value.
+This project presents an end-to-end data science solution for analyzing Indian Premier League (IPL) cricket data. It leverages advanced SQL for in-depth analysis and feature engineering, and provides an interactive web dashboard built with Streamlit for intuitive data exploration.
 
-This project serves as a direct, practical application of the concepts detailed in the "Decoding SQL: A Foundational Guide" presentation. It showcases how fundamental SQL knowledge can be extended to solve complex data analysis problems.
+The goal of this project is to uncover insights about player performance, team strategies, and match dynamics, making the findings accessible to a broad audience.
 
-## Key Skills Demonstrated
+## Key Features
 
-*   **Advanced SQL:** Use of Common Table Expressions (CTEs), Window Functions (`ROW_NUMBER`), complex joins, and aggregations to perform analysis directly within the database.
-*   **Feature Engineering:** Creating new, insightful features (e.g., `performance_score`, `value_for_money`) from base data using SQL.
-*   **Data Analysis:** Asking and answering analytical questions with data to provide actionable insights.
-*   **Data Visualization:** Using Python libraries (`matplotlib`, `seaborn`) to create clear and professional charts that communicate the results of the SQL queries.
-*   **Python & Jupyter Notebooks:** Using Python as a control layer to execute SQL and present findings in a standard data science environment.
+*   **Data Pipeline:** Robust data loading and cleaning processes for ball-by-ball and match data into a structured SQLite database.
+*   **Advanced SQL Analysis:** Utilizes complex SQL queries, including Window Functions and Common Table Expressions (CTEs), to derive key performance indicators and answer various analytical questions.
+*   **Interactive Dashboard:** A user-friendly web application developed with Streamlit for visualizing player statistics, team performance, and match insights.
+*   **Player Performance Metrics:** Calculation of custom metrics to evaluate player value and identify key trends.
+
+## Skills Demonstrated
+
+*   **Programming Languages:** Python, SQL
+*   **Data Manipulation & Analysis:** Pandas, SQLite
+*   **Data Visualization:** Matplotlib, Seaborn, Streamlit
+*   **Software Engineering Practices:** Git, GitHub, virtual environments, modular scripting, application development.
+*   **Data Storytelling:** Communicating complex analytical insights through an interactive web interface.
 
 ## Project Structure
 
 ```
 .
 ├── database/
-│   ├── schema.sql                     # Base table schema for players
-│   ├── data.sql                       # INSERT statements for sample player data
-│   ├── 02_feature_engineering.sql     # Creates a SQL VIEW with new calculated features
-│   └── 03_analytical_queries.sql      # Contains complex queries for analysis
+│   ├── data.sql                        # Original sample player data (deprecated)
+│   ├── deliveries.csv                  # Raw ball-by-ball data
+│   ├── ipl.db                          # SQLite database
+│   ├── load_data.py                    # Script to load CSV data into ipl.db
+│   ├── matches.csv                     # Raw match summary data
+│   ├── schema.sql                      # Original player schema (deprecated)
+│   ├── schema_presentation.sql         # New schema for matches and deliveries tables
+│   ├── 02_feature_engineering.sql      # SQL for feature engineering (deprecated with new data)
+│   ├── 03_analytical_queries.sql       # Original analytical queries (deprecated with new data)
+│   ├── 04_wicketkeeper_analysis.sql    # SQL for wicketkeeper analysis
+│   └── 05_additional_questions.sql     # SQL for new analytical questions
 │
 ├── notebooks/
-│   └── 01_EDA_and_Visualization.py    # Jupyter Notebook (as .py) to run the analysis and create plots
+│   ├── 01_EDA_and_Visualization.py     # Original EDA and visualization notebook (deprecated with new data)
+│   ├── 02_Additional_Analysis.py       # Script to run and display new analytical questions
+│   └── 02_Player_Value_Prediction_Model.py # Placeholder for ML model
 │
-└── README.md
+├── app.py                              # Streamlit web application for interactive dashboard
+├── check_env.py                        # Environment checking script (for debugging)
+├── .gitignore
+├── README.md
+└── requirements.txt
 ```
 
-## How to Run the Analysis
+## How to Run the Project
 
-1.  **Clone the repository.**
+Follow these steps to set up and run the IPL Data Analysis Dashboard locally:
 
-2.  **Navigate to the project directory.**
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/Sehaj64/IPL-Auction-Strategy.git
+    cd IPL-Auction-Strategy
+    ```
 
-3.  **Create and activate a virtual environment (recommended):**
+2.  **Create and activate a virtual environment (recommended):**
     ```bash
     # For Windows
     python -m venv venv
@@ -45,27 +69,32 @@ This project serves as a direct, practical application of the concepts detailed 
     source venv/bin/activate
     ```
 
-4.  **Install the required Python libraries:**
+3.  **Install the required Python libraries:**
     ```bash
     pip install -r requirements.txt
     ```
 
-5.  **Start the Jupyter Notebook server:**
+4.  **Load the data into the SQLite database:**
+    This script will create `ipl.db` and populate it with `matches.csv` and `deliveries.csv`.
     ```bash
-    jupyter notebook
+    python database/load_data.py
     ```
-    This will open a new tab in your web browser.
 
-6.  **Open and run the notebook:**
-    Navigate to the `notebooks/` directory in the Jupyter interface and open the `01_EDA_and_Visualization.py` file. You can then run the cells sequentially to see the analysis and visualizations.
+5.  **Run the Interactive Dashboard:**
+    ```bash
+    streamlit run app.py
+    ```
+    Your web browser will automatically open to the Streamlit dashboard.
 
-## Analysis Highlights
+## Analysis Highlights (from Dashboard)
 
-The analysis performed in this project leverages multi-year data to answer several key questions:
+The interactive dashboard provides insights into various aspects of IPL data, including:
 
-*   **Who were the top "value-for-money" players in the most recent season?**
-    *   This is determined by a custom `performance_score` relative to the player's base price for the 2023 season.
-*   **How has a star player's performance trended over time?**
-    *   The analysis tracks Virat Kohli's performance score across the 2022 and 2023 seasons to visualize his form.
-*   **How has the average performance of key roles changed year-over-year?**
-    *   The project compares the average performance of Batsmen and Bowlers between seasons to identify trends.
+*   Total number of unique cities where matches were played.
+*   Distribution of boundaries and dot balls.
+*   Team-wise performance metrics for boundaries and dot balls.
+*   Analysis of dismissal types.
+*   Top bowlers by extra runs conceded.
+*   Total runs scored at different venues.
+*   Year-wise run analysis for specific venues like Eden Gardens.
+*   Wicketkeeper performance based on batting metrics.
