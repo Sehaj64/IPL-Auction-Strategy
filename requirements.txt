@@ -1,6 +1,4 @@
 pandas
 matplotlib
 seaborn
-notebook
-jupytext
 streamlit

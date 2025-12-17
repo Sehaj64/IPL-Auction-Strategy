@@ -11,8 +11,8 @@ def main():
     st.title("IPL Data Analysis Dashboard")
 
     st.write("""
-    This dashboard presents an analysis of the Indian Premier League (IPL) data.
-    The analysis is based on the 'Additional Questions' from the project presentation.
+    This interactive dashboard presents a comprehensive analysis of Indian Premier League (IPL) cricket data,
+    exploring key aspects of player performance, team strategies, and match dynamics.
     """)
 
     conn = sqlite3.connect(DB_FILE)
