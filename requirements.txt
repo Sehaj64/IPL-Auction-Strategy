@@ -2,4 +2,4 @@ pandas
 matplotlib
 seaborn
 streamlit
-altair
+altair<5
